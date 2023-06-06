@@ -1,0 +1,18 @@
+﻿<Window x:Class="tesztpizza.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tesztpizza"
+        mc:Ignorable="d"
+        Title="Pizza Builder App" Height="350" Width="400">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <CheckBox x:Name="TomatoSauceCheckbox" Content="Pizzaszósz" Margin="10"/>
+            <CheckBox x:Name="SalamiCheckbox" Content="Szalámi" Margin="10"/>
+            <CheckBox x:Name="PepperoniCheckbox" Content="Pepperóni" Margin="10"/>
+            <CheckBox x:Name="CheeseCheckbox" Content="Sajt" Margin="10"/>
+            <Button x:Name="BuildPizzaButton" Content="Pizza készítése" Margin="10" Click="BuildPizzaButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
