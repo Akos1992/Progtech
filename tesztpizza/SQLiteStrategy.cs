@@ -10,6 +10,7 @@ namespace tesztpizza
 {
     public class SQLiteStrategy : DatabaseStrategy
     {
+
         protected override string GetPizzasTableSQL()
         {
             return "CREATE TABLE IF NOT EXISTS pizzas (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);";
@@ -30,7 +31,7 @@ namespace tesztpizza
             return $"Data Source={dbName};Version=3;";
         }
 
-        protected override IDbConnection CreateConnection()
+        public override IDbConnection CreateConnection()
         {
             return new SQLiteConnection(connectionString);
         }

@@ -38,9 +38,9 @@ namespace tesztpizza
         }
 
         // A kód ismétlés elkerülése érdekében (DRY) és a SRP elvének érdekében az SQL parancs futtatását is kiszervezzük.
-        // Innentől a korábbi CreatePizzasTable, CreateToppingsTable és CreateCrustsTable metódusoknak más nem is kell létezniük
+        // Innentől a korábbi CreatePizzasTable, CreateToppingsTable és CreateCrustsTable metódusoknak már nem is kell létezniük.
         // Elegendő ha helyettük az SQL parancsot tartalmazó string -eket adunk vissza. Ez utóbbi lehet adatbázis függő, így
-        // ezt már nem érdemes bevonni az absztrakt osztályba.
+        // ennek definiálását már nem érdemes bevonni az absztrakt osztályba.
         protected void ExecuteNonQuery(IDbConnection connection, string commandText)
         {
             using (IDbCommand command = connection.CreateCommand())
@@ -57,6 +57,6 @@ namespace tesztpizza
 
         // Az adatbázis kapcsolati stringjét és a kapcsolatot a leszármazott osztályok hozzák létre
         protected abstract string GetConnectionString();
-        protected abstract IDbConnection CreateConnection();
+        public abstract IDbConnection CreateConnection();
     }
 }
