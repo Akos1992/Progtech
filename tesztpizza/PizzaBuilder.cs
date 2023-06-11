@@ -45,12 +45,12 @@ namespace PizzaBuilderApp
         public Pizza(string baseDough)
         {
             ingredients = new StringBuilder();
-            ingredients.AppendLine(baseDough);
+            ingredients.Append(baseDough+"\n");
         }
 
         public void AddIngredient(string ingredient)
         {
-            ingredients.AppendLine(ingredient);
+            ingredients.Append(ingredient + "\n");
         }
 
         public override string ToString()

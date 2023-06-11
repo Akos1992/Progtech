@@ -1,4 +1,5 @@
 using PizzaBuilderApp;
+using static tesztpizza.Tests.Util;
 
 namespace tesztpizza.Tests
 {
@@ -20,7 +21,11 @@ namespace tesztpizza.Tests
             // Assert
             string expected = "Alap tészta\nPizzaszósz\nPepperóni\nSajt\n";
             string actual = pizza.ToString();
-            Assert.IsTrue(actual.Contains(expected));
+            //Assert.IsTrue(actual.Contains(expected));
+            Console.WriteLine(StringToHex(expected));
+            Console.WriteLine(StringToHex(actual));
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }
