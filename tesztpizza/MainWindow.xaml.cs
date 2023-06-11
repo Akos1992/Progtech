@@ -21,6 +21,13 @@ namespace tesztpizza
         public MainWindow()
         {
             InitializeComponent();
+            CreatingDatabase();
+        }
+
+        private void CreatingDatabase()
+        {
+            SQLiteStrategy strategy = new SQLiteStrategy();
+            strategy.CreateDatabase("pizza.db");
         }
 
         private void BuildPizzaButton_Click(object sender, RoutedEventArgs e)
