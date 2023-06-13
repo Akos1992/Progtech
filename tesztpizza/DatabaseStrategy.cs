@@ -11,6 +11,7 @@ namespace tesztpizza
     {
         protected string dbName;
         protected string connectionString;
+        protected IDbConnection connection;
 
         // A sablon metódus (a Strtégiában), amely definiálja a táblák létrehozásának sorrendjét.
         public void CreateDatabase(string nameOfDb)
@@ -23,7 +24,7 @@ namespace tesztpizza
             dbName = nameOfDb;
             connectionString = GetConnectionString();
 
-            using (IDbConnection connection = CreateConnection())
+            using (connection = CreateConnection())
             {
                 connection.Open();
 
@@ -49,6 +50,8 @@ namespace tesztpizza
                 command.ExecuteNonQuery();
             }
         }
+
+        public IDbConnection GetConnection() { return connection; }
 
         // Az egyes táblák létrehozásának részleteit a leszármazott osztályok implementálják
         protected abstract string GetPizzasTableSQL();

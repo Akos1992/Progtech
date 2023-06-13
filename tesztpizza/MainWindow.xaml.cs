@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace tesztpizza
 {
     public partial class MainWindow : Window
     {
+        private IDbConnection connection;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,6 +31,7 @@ namespace tesztpizza
         {
             SQLiteStrategy dbStrategy = new SQLiteStrategy();
             dbStrategy.CreateDatabase("pizza.db");
+            connection = dbStrategy.GetConnection();
         }
 
         private void BuildPizzaButton_Click(object sender, RoutedEventArgs e)
@@ -45,6 +49,9 @@ namespace tesztpizza
                 pizzaBuilder.AddCheese();
 
             Pizza pizza = pizzaBuilder.GetPizza();
+
+            // Pizza hozázadása az adatbázishoz
+            //AddPizzaToDatabase(connection, pizza);
 
             // Megjelenítjük a kész pizzát
             StringBuilder sb = new StringBuilder();
