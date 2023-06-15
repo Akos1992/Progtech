@@ -24,16 +24,12 @@ namespace tesztpizza.Tests
         [TestMethod]
         public void TestCreateDatabase()
         {
-            // Arrange
             SQLiteStrategy strategy = new SQLiteStrategy();
 
-            // Act
             strategy.CreateDatabase(dbName);
 
-            // Assert
             using (IDbConnection connection = strategy.CreateConnection())
             {
-                // If the database was not created, opening the connection will throw an error
                 connection.Open();
                 Assert.IsTrue(connection.State == ConnectionState.Open);
             }
@@ -42,11 +38,9 @@ namespace tesztpizza.Tests
         [TestMethod]
         public void TestCreateTables()
         {
-            // Arrange
             SQLiteStrategy strategy = new SQLiteStrategy();
             strategy.CreateDatabase(dbName);
 
-            // Act & Assert
             using (IDbConnection connection = strategy.CreateConnection())
             {
                 connection.Open();

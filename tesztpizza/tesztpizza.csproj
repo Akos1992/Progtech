@@ -77,6 +77,7 @@
     <Compile Include="DatabaseUtil.cs" />
     <Compile Include="IDatabaseConnectionFactory.cs" />
     <Compile Include="IObserver.cs" />
+    <Compile Include="PizzaFactory.cs" />
     <Compile Include="PizzaRepository.cs" />
     <Compile Include="SQLiteStrategy.cs" />
     <Page Include="MainWindow.xaml">

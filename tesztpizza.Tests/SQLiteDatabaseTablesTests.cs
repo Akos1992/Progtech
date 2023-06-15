@@ -13,15 +13,12 @@ namespace tesztpizza.Tests
         [TestMethod]
         public void CreateDatabase_CreatesDatabaseFile()
         {
-            // Arrange
             string testDbName = "TestDB2";
             string testDbFileName = testDbName + ".sqlite";
             SQLiteStrategy strategy = new SQLiteStrategy();
 
-            // Act
             strategy.CreateDatabase(testDbFileName);
 
-            // Assert
             Assert.IsTrue(File.Exists(testDbFileName));
 
             // Cleanup
@@ -31,15 +28,12 @@ namespace tesztpizza.Tests
         [TestMethod]
         public void CreateDatabase_CreatesTables()
         {
-            // Arrange
             string testDbName = "TestDB3";
             string testDbFileName = testDbName + ".sqlite";
             SQLiteStrategy strategy = new SQLiteStrategy();
 
-            // Act
             strategy.CreateDatabase(testDbFileName);
 
-            // Assert
             using (SQLiteConnection conn = new SQLiteConnection($"Data Source={testDbFileName};Version=3;"))
             {
                 conn.Open();

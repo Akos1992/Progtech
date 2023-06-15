@@ -40,7 +40,6 @@ namespace tesztpizza.Tests
             [TestMethod]
             public void TestObserverUpdateOnAddPizza()
             {
-                // Arrange
                 PizzaRepository repository = new PizzaRepository(dbStrategy);
                 MockObserver observer = new MockObserver();
                 repository.AddObserver(observer); 
@@ -51,10 +50,8 @@ namespace tesztpizza.Tests
                 pizza.AddPepperoni();
                 pizza.AddSalami();
 
-                // Act
                 repository.AddPizza(pizza.GetPizza());
 
-                // Assert
                 Assert.IsNotNull(observer.LatestPizza);
                 Assert.AreEqual(pizza.GetPizza().ToString(), observer.LatestPizza.ToString());
             }

@@ -34,7 +34,6 @@ namespace tesztpizza.Tests
         [TestMethod]
         public void TestAddPizza()
         {
-            // Arrange
             PizzaRepository repository = new PizzaRepository(dbStrategy);
             PizzaBuilder pizza = new PizzaBuilder();
             pizza.AddTomatoSauce();
@@ -42,10 +41,8 @@ namespace tesztpizza.Tests
             pizza.AddPepperoni();
             pizza.AddSalami();
 
-            // Act
             repository.AddPizza(pizza.GetPizza());
 
-            // Assert
             using (IDbConnection connection = dbStrategy.CreateConnection())
             {
                 connection.Open();
