@@ -17,22 +17,32 @@ using PizzaBuilderApp;
 
 namespace tesztpizza
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IPizzaObserver
     {
         private IDbConnection connection;
+        private PizzaRepository pizzaRepository;
+        SQLiteStrategy dbStrategy;
 
         public MainWindow()
         {
             InitializeComponent();
             CreatingDatabase();
+            pizzaRepository = new PizzaRepository(dbStrategy);
+            pizzaRepository.AddObserver(this);
         }
 
         private void CreatingDatabase()
         {
-            SQLiteStrategy dbStrategy = new SQLiteStrategy();
+            dbStrategy = new SQLiteStrategy();
             dbStrategy.CreateDatabase("pizza.db");
             connection = dbStrategy.GetConnection();
         }
+
+        public void Update(Pizza newPizza)
+        {
+            // Pizza hozzáadva: frissítse a GUI-t itt
+        }
+
 
         private void BuildPizzaButton_Click(object sender, RoutedEventArgs e)
         {
@@ -50,8 +60,8 @@ namespace tesztpizza
 
             Pizza pizza = pizzaBuilder.GetPizza();
 
-            // Pizza hozázadása az adatbázishoz
-            //AddPizzaToDatabase(connection, pizza);
+            // Pizza hozázadása az adatbázishoz a repository -n keresztül
+            pizzaRepository.AddPizza(pizza);
 
             // Megjelenítjük a kész pizzát
             StringBuilder sb = new StringBuilder();
@@ -69,6 +79,12 @@ namespace tesztpizza
             SalamiCheckbox.IsChecked = false;
             PepperoniCheckbox.IsChecked = false;
             CheeseCheckbox.IsChecked = false;
+        }
+
+        private void OpenPizzaListButton_Click(object sender, RoutedEventArgs e)
+        {
+            PizzaListWindow pizzaListWindow = new PizzaListWindow(pizzaRepository);
+            pizzaListWindow.Show();
         }
     }
 }

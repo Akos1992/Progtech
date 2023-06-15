@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace tesztpizza
 {
-    public interface IObserver
+    public interface IPizzaObserver
     {
         void Update(Pizza pizza);
     }

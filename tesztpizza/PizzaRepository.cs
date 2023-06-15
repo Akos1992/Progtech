@@ -12,16 +12,21 @@ namespace tesztpizza
     public class PizzaRepository
     {
         private SQLiteStrategy dbStrategy;
-        private List<IObserver> observers = new List<IObserver>();
+        private List<IPizzaObserver> observers = new List<IPizzaObserver>();
 
         public PizzaRepository(SQLiteStrategy dbStrategy)
         {
             this.dbStrategy = dbStrategy;
         }
 
-        public void AddObserver(IObserver observer)
+        public void AddObserver(IPizzaObserver observer)
         {
             observers.Add(observer);
+        }
+
+        public void RemoveObserver(IPizzaObserver observer)
+        {
+            observers.Remove(observer);
         }
 
         public void AddPizza(Pizza pizza)

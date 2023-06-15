@@ -13,6 +13,7 @@
             <CheckBox x:Name="PepperoniCheckbox" Content="Pepperóni" Margin="10"/>
             <CheckBox x:Name="CheeseCheckbox" Content="Sajt" Margin="10"/>
             <Button x:Name="BuildPizzaButton" Content="Pizza készítése" Margin="10" Click="BuildPizzaButton_Click"/>
+            <Button x:Name="OpenPizzaListButton" Content="Pizzák listája" Margin="10" Click="OpenPizzaListButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>
