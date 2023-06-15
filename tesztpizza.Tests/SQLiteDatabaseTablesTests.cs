@@ -44,24 +44,21 @@ namespace tesztpizza.Tests
             {
                 conn.Open();
 
-                using (SQLiteCommand cmd = new SQLiteCommand("INSERT INTO 'pizzas' (name) VALUES ('testpizza');", conn),
-                                      cmd2 = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='pizzas';", conn),
-                                      cmd3 = new SQLiteCommand("INSERT INTO 'toppings' (pizza_id, name) VALUES (1, 'testtopping');", conn),
-                                      cmd4 = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='toppings';", conn),
-                                      cmd5 = new SQLiteCommand("INSERT INTO 'crusts' (pizza_id, name) VALUES (1, 'testcrust');", conn),
-                                      cmd6 = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='crusts';", conn))
+                using (SQLiteCommand cmd1 = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='pizzas';", conn),
+                                      cmd2 = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='toppings';", conn),
+                                      cmd3 = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='crusts';", conn))
                 {
-                    using (SQLiteDataReader reader = cmd2.ExecuteReader())
+                    using (SQLiteDataReader reader = cmd1.ExecuteReader())
                     {
                         Assert.IsTrue(reader.HasRows);  // 'pizzas' table exists
                     }
 
-                    using (SQLiteDataReader reader = cmd4.ExecuteReader())
+                    using (SQLiteDataReader reader = cmd2.ExecuteReader())
                     {
                         Assert.IsTrue(reader.HasRows);  // 'toppings' table exists
                     }
 
-                    using (SQLiteDataReader reader = cmd6.ExecuteReader())
+                    using (SQLiteDataReader reader = cmd3.ExecuteReader())
                     {
                         Assert.IsTrue(reader.HasRows);  // 'crusts' table exists
                     }
