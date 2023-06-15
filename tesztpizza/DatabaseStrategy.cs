@@ -28,9 +28,9 @@ namespace tesztpizza
             {
                 connection.Open();
 
-                ExecuteNonQuery(connection, GetPizzasTableSQL());
-                ExecuteNonQuery(connection, GetToppingsTableSQL());
-                ExecuteNonQuery(connection, GetCrustsTableSQL());
+                ExecuteNonQuery(GetPizzasTableSQL());
+                ExecuteNonQuery(GetToppingsTableSQL());
+                ExecuteNonQuery(GetCrustsTableSQL());
 
                 Console.WriteLine("Database tables created successfully.");
 
@@ -42,7 +42,7 @@ namespace tesztpizza
         // Innentől a korábbi CreatePizzasTable, CreateToppingsTable és CreateCrustsTable metódusoknak már nem is kell létezniük.
         // Elegendő ha helyettük az SQL parancsot tartalmazó string -eket adunk vissza. Ez utóbbi lehet adatbázis függő, így
         // ennek definiálását már nem érdemes bevonni az absztrakt osztályba.
-        protected void ExecuteNonQuery(IDbConnection connection, string commandText)
+        protected void ExecuteNonQuery(string commandText)
         {
             using (IDbCommand command = connection.CreateCommand())
             {
