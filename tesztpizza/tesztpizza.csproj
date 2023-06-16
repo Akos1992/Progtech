@@ -75,13 +75,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DatabaseUtil.cs" />
+    <Compile Include="FileLogger.cs" />
     <Compile Include="IObservable.cs" />
     <Compile Include="IPizzaObserver.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="PizzaFactory.cs" />
     <Compile Include="PizzaListWindow.xaml.cs">
       <DependentUpon>PizzaListWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PizzaRepository.cs" />
+    <Compile Include="ScreenLogger.cs" />
     <Compile Include="SQLiteStrategy.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
