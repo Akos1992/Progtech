@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace tesztpizza
 {
-    public class PizzaRepository
+    public class PizzaRepository : IObservable
     {
         private SQLiteStrategy dbStrategy;
         private List<IPizzaObserver> observers = new List<IPizzaObserver>();
@@ -27,6 +27,14 @@ namespace tesztpizza
         public void RemoveObserver(IPizzaObserver observer)
         {
             observers.Remove(observer);
+        }
+
+        public void NotifyObservers(Pizza pizza)
+        {
+            foreach (var observer in observers)
+            {
+                observer.Update(pizza);
+            }
         }
 
         public void AddPizza(Pizza pizza)
@@ -78,11 +86,7 @@ namespace tesztpizza
                 }
                 connection.Close();
             }
-
-            foreach(var observer in observers)
-            {
-                observer.Update(pizza);
-            }
+            NotifyObservers(pizza);
         }
     }
 }

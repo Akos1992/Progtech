@@ -75,6 +75,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DatabaseUtil.cs" />
+    <Compile Include="IObservable.cs" />
     <Compile Include="IPizzaObserver.cs" />
     <Compile Include="PizzaFactory.cs" />
     <Compile Include="PizzaListWindow.xaml.cs">
