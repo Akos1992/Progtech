@@ -76,6 +76,7 @@ namespace tesztpizza
                         throw;
                     }
                 }
+                connection.Close();
             }
 
             foreach(var observer in observers)
